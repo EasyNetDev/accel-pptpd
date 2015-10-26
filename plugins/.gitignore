@@ -1,0 +1,5 @@
+*.o
+tags
+TAGS
+*~
+*.loT

@@ -1,0 +1,34 @@
+Source: accel-pptpd
+Section: net
+Priority: optional
+Maintainer: Adrian Ban <adrian@abtelecom.ro>
+Standards-Version: 3.9.4
+Build-Depends: debhelper (>= 9),
+    automake,
+    hardening-wrapper,
+    libwrap0-dev,
+    ppp-dev (>= 2.4.6-2~),
+Homepage: http://poptop.sourceforge.net/dox/
+
+Package: accel-pptpd
+Architecture: linux-any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+    bcrelay,
+    netbase,
+    ppp (>= 2.4.6-2~),
+Conflicts: pptpd
+Description: PoPToP Point to Point Tunneling Server using kernel drivers
+ This implements a Virtual Private Networking Server (VPN) that is
+ compatible with Microsoft VPN clients. It allows Windows users to
+ connect to an internal firewalled network using their dialup.
+ This add a plus of performance because is using kernel drivers
+ and the packet processing is done in kernel instead in user-space
+
+Package: bcrelay
+Architecture: linux-any
+Replaces: accel-pptpd (<< 1.2.3-1),
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Conflicts: pptpd
+Description: Broadcast relay daemon
+ The bcrelay daemon relays broadcasts between two interfaces. It is
+ shipped with the pptpd package, but can be used for other purposes.

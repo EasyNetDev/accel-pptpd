@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_HARDENING=1
+export CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+export LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	autoreconf --force --install
+	dh_auto_configure -- \
+		--prefix=/usr \
+		--mandir=/usr/share/man \
+		--with-libwrap \
+		--enable-bcrelay
+
+override_dh_install:
+	dh_install --fail-missing
+
+override_dh_installdocs:
+	dh_installdocs --exclude=test.txt

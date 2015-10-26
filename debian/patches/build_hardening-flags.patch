@@ -1,0 +1,17 @@
+Description: Enable hardened build flags
+Author: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Forwarded: not-needed
+Bug-Debian: http://bugs.debian.org/656650
+
+--- a/plugins/Makefile
++++ b/plugins/Makefile
+@@ -1,7 +1,7 @@
+ CC	= gcc
+ COPTS	= -O2 -g
+-CFLAGS	= $(COPTS) -I.. -I../../include -fPIC
+-LDFLAGS	= -shared
++CFLAGS  += $(COPTS) -I.. -I../../include -fPIC
++LDFLAGS	+= -shared
+ LDADD   = -lutil
+ INSTALL	= install -o root
+ prefix  = /usr/local

@@ -1,0 +1,427 @@
+accel-pptpd (0.9.0-1) unstable; urgency=medium
+
+  * accel-pptpd based on 0.8.5 and ported to pptpd version 1.4.0
+
+ -- Adrian Ban <adrian@abtelecom.ro>  Mon, 26 Oct 2015 17:41:46 +0200
+
+pptpd (1.4.0-5) unstable; urgency=medium
+
+  * Fix description of patch introduced in 1.4.0-4
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 04 Nov 2014 23:30:46 +0100
+
+pptpd (1.4.0-4) unstable; urgency=medium
+
+  * Fix buffer overflow from overlong interface names in bcrelay.
+    Closes: #765442
+  * Fixes an important bug, urgency set to medium
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 26 Oct 2014 20:50:20 +0100
+
+pptpd (1.4.0-3) unstable; urgency=low
+
+  * Fix status check in init script. Closes: #747146
+  * Don't break existing connections when using systemd.
+    Closes: #752094
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 15 Jul 2014 18:40:38 +0200
+
+pptpd (1.4.0-2) unstable; urgency=low
+
+  * Re-compile against ppp 2.4.6, Closes: #745770
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Thu, 24 Apr 2014 22:33:48 +0000
+
+pptpd (1.4.0-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Wed, 23 Oct 2013 17:35:35 +0200
+
+pptpd (1.3.4+27+gddb30f8-1) unstable; urgency=low
+
+  * New upstream version from git commit ddb30f8
+  * Time to say thanks to Rene Mayrhofer for maintaining pptpd for
+    almost 14 years.
+  * Modernize Debianisation
+  * Update debian/watch file, thanks Bart Martens
+  * Drop debconf usage. Closes: #209082
+  * Update hint about IP forwarding. Closes: #496596, #491429
+  * Update package description. Closes: #473713
+  * Add a manpage for bcrelay. Special thanks to Khang Nguyen Trong.
+    Closes: #426553
+  * Catch missing EOL at EOF. Closes: #567480
+  * Update config files from newer upstream versions. (LP:704220)
+  * Fix IDLE_WAIT implementation. Closes: #692654
+  * Rewrite init script
+  * Provide systemd service definition
+  * Restrict os to linux for the time being
+  * Fix FTBFS, thanks Hideki Yamane. Closes: #725559
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 20 Oct 2013 18:47:30 +0200
+
+pptpd (1.3.4-6) unstable; urgency=low
+
+  * New maintainer
+  * Enable hardening build flags. Closes: #656650
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Tue, 05 Feb 2013 22:36:53 +0100
+
+pptpd (1.3.4-5.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Handle ENOBUFS gracefully.
+    Closes: #692129: pptpd: PPTP Connections Drop
+  * Programming error, reference to a stack variable used out of scope in
+    arguments to execvp call.
+    Closes: #693136: pptpd: Binary trash when launching ppp
+
+ -- Maximiliano Curia <maxy@debian.org>  Wed, 28 Nov 2012 16:21:01 +0100
+
+pptpd (1.3.4-5.1) unstable; urgency=low
+
+  * Non-maintainer upload
+  * Remove debian/conffiles, avoids debsum mismatches regarding conffiles
+    (Closes: #689779)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 28 Oct 2012 17:19:04 +0100
+
+pptpd (1.3.4-5) unstable; urgency=medium
+
+  Urgency medium because 1.3.4-4 broke connections for some settings.
+  * Fix bug introduced by last change adding the remotenumber parameter
+    to pppd. Thanks to Michael Poetters for the patch!
+    Closes: #625459: pppctrl fixup
+    Closes: #622258: pptpd: Impossible to establish connection
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Sat, 07 May 2011 22:39:57 +0200
+
+pptpd (1.3.4-4) unstable; urgency=low
+
+  * Apply patch provided by Sergey Naumov to fix a segmentation fault
+    when invalid IP ranges are specified in the config file (upper <
+    lower)
+  * Apply patch provided by Igor A Tarasov to pass the remotenumber
+    command line option to pppd, which is then used for th radius
+    plugin.
+    Closes: #610375: remotenumber support
+  * Report that the init script also supports a "status" option.
+    Closes: #536424: init.d script error message does not mention
+                     "status" action
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Tue, 29 Mar 2011 11:03:36 +0200
+
+pptpd (1.3.4-3) unstable; urgency=low
+
+  * Add build-dependency to ppp-dev >=2.4.5-3 and depend on ppp >=2.4.5-3
+    to make logwtmp plugin work again.
+    Closes: #593278: ppp 2.4.5 implies a recompilation pf pptpd
+  * Fixed a typo in the README file.
+  * Acknowledge NMU. (Closes: #458476)
+  * Update debian policy version to 3.9.1, no notable changes to packaging.
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Sat, 25 Sep 2010 22:13:16 +0200
+
+pptpd (1.3.4-2.1) unstable; urgency=low
+
+  * Non-maintainer upload to solve release goal.
+  * Add LSB dependency header to init.d scripts (Closes: #458476)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 16 Mar 2008 10:33:35 +0100
+
+pptpd (1.3.4-2) unstable; urgency=low
+
+  * Applied additional patch to fix regression in GRE re-ordering fix in
+    version 1.3.4 (with non-RFC-compliant clients.
+    Closes: #416404: pptpd freeze
+  * Use the new configure option for bcrelay support.
+    Closes: #421999: No bcrelay support in pptpd
+    Closes: #424764: pptpd: bcrelay support missing
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Mon, 21 May 2007 23:31:53 +0100
+
+pptpd (1.3.4-1) unstable; urgency=low
+
+  * New upstream release.
+    Closes: #416404: pptpd freeze
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Tue, 17 Apr 2007 15:36:30 +0100
+
+pptpd (1.3.0-2) unstable; urgency=high
+
+  Urgency high because of fixes to RC bugs.
+  * Fix syslog flooding. Thanks to Timo van Roermund for the patch.
+    Closes: #369539: PPTPD flooding syslog
+    Closes: #396187 pptpd: Patch to disable unnecessary lines in syslog
+  * Update to work with pppd 2.4.4b1. Thanks to Stu Teasdalefor the
+    patch.
+    Closes: #369714: pptpd-logwtmp.so does not work with ppp 2.4.4b1
+    Closes: #387538: pptpd-logwtmp.so does not work with ppp 2.4.4rel-2
+  * Add a comment to the default config file that points to a Windows
+    bug. Thanks to Stéphane Rosi for the patch.
+    Closes: #384523: pptpd: Warn about a bug in Microsoft Windows VPN
+                     client
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Mon,  6 Nov 2006 18:35:28 +0000
+
+pptpd (1.3.0-1) unstable; urgency=low
+
+  * New upstream release.
+    Closes: #366395: pptpd: New Upstream version - fixes reordering and
+                     loopback bugs
+    This release also includes the patches contributed by Ilguiz Latypov to
+    allow multiple control connections from the same client IP (e.g. for
+    multiple clients behind the same NAT connecting to the same pptpd server).
+    This seems to have been fixed with upstream 1.2.1, but I missed it then.
+    Closes: #171831: pptpd allocates call ID 0 for every new TCP link
+  * Acknowledge NMU. Thanks to Luk for helping out.
+    Closes: #356104: diff for 1.2.3-1.1 NMU of pptpd
+    Closes: #350456: bcrelay: Should "Conflicts: pptpd (<< 1.2.3-1)"
+  * Manually updated plugins/pppd.h again with header from ppp-dev 2.4.4b1-1.
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Sun, 15 Jan 2006 17:09:31 +0000
+
+pptpd (1.2.3-1.1) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * Let bcrelay replace files from the old pptpd (Closes: #350456).
+
+ -- Luk Claes <luk@debian.org>  Thu,  9 Mar 2006 18:59:06 +0100
+
+pptpd (1.2.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added watch file.
+  * Manually updated the pppd headers for the logwtmp plugin again.
+    This release should work with ppp 2.4.4b1 now, so depend on this version.
+    Closes: #343150: pptpd-logwtmp.so does not work with ppp 2.4.4b1
+  * Split off the bcrelay binary into its own package. pptpd now depends on
+    it (it does not necessarily depend on bcrelay, but most people will want
+    to use it and recommends are still handled rather poorly).
+    Closes: #347414: pptpd: Splitting bcrelay as a separate package
+  * Update dh_compat to level 4 now.
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Sat, 14 Jan 2006 15:01:12 +0000
+
+pptpd (1.2.1-5) unstable; urgency=low
+
+  * Depend on debconf | debconf-2.0. Thanks to Joey for the reminder....
+  * While I am at it, also use dh_compat level 3 now.
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Mon, 26 Sep 2005 19:18:57 +0200
+
+pptpd (1.2.1-4) unstable; urgency=low
+
+  * Updated depends on ppp to 2.4.3-20041231 to prevent automatic
+    upgrades of pptpd in sarge. In fact, the only change to the version
+    presently in sarge is the update of headers for the new ppp, so
+    reflect this in the depends.
+    Thanks to Norman Rasmussen for actually suggesting this simple fix for
+    this bug report.
+    Closes: #305012: logwtmp plugin is for pppd version 2.4.3, but version
+                     is 2.4.2
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Tue, 19 Apr 2005 14:33:55 +0200
+
+pptpd (1.2.1-3) unstable; urgency=low
+
+  * Updated the ppp headers for the pppd plugin to ppp 2.4.3.
+    Closes: #297508: new pppd 2.4.3 in sid failed to start with
+                     /usr/lib/pptpd/pptpd-logwtmp.so
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Mon,  4 Apr 2005 14:48:16 +0200
+
+pptpd (1.2.1-2) unstable; urgency=low
+
+  * All of the changes in this upload have been made by Faidon Liambotis, many
+    thanks for the patch !
+  * Removed dependency on perl-base (Policy Manual, section 3.5).
+    Closes: #262430: pptpd: needless dependency on an essential package
+  * Removed build-dependency from the binary (Policy Manual, section 5.2).
+  * Fixed upstream URL in the copyright file.
+    Closes: #261240: pptpd: Wrong upstream url
+  * Patched logwtmp to work with ppp 2.4.2 instead of 2.4.3 (patch provided by upstream).
+    Closes: #259487: pptpd: Issue with logwtmp being for verison 2.4.3 in
+                     pptpd 1.2.1-1
+  * Removed (not implemented) "reload" target from init.d script, upstream does not provide a reload mechanism.
+  * Changed Standards-Version to 3.6.1.0.
+
+ -- Rene Mayrhofer <rene@mayrhofer.eu.org>  Sun,  5 Sep 2004 17:05:35 +0200
+
+pptpd (1.2.1-1) unstable; urgency=low
+
+  * New upstream version.
+    Closes: #248123: ip-up zombie problem: diagnosed and fixed
+  * Applied Japanese debconf translations.
+    Closes: #239211: pptpd: Japanese po-debconf template translation (ja.po)
+  * Additionally install README.logwtmp and README.portslave under
+    /usr/share/doc/pptpd now.
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Wed, 30 Jun 2004 10:24:51 +0200
+
+pptpd (1.2.0-1) unstable; urgency=low
+
+  * New upstream version.
+    Closes: #107933: pptpd: pptpd segfaults if called without arguments
+    Closes: #126486: pptpd: wish it had better integration support with
+    		     Portslave
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Tue,  4 May 2004 09:54:01 +0200
+
+pptpd (1.1.4.0b4-1) unstable; urgency=low
+
+  * Finally acknowledge the bugs fixed in the NMUs:
+    Closes: #132819 (Build-Depends on devhelper)
+    Closes: #126712 (Mark /etc/init.d/pptpd as conffile)
+    Closes: #57849 (Remove recommends line)
+  * Enable the MSCHAP and MPPE options again in the default config, but now
+    changed for the new upstream pppd syntax.
+  * Also include the new upstream source in the upload -
+    dpkg-buildpackage was confused by the version number.
+  * Enhance the init script to:
+    - Include a "status" option.
+    - Force pptpd to close its file descriptors.
+    Closes: #189426: pptpd does not close/redirect stdout and stderr
+  * Use po-debconf for debconf translations and add pt_BR and FR translations.
+    However, debconf is still not used for autoconfig until I find time to
+    implement the config script properly. It will come, soon ;)
+    Also fix some english short descriptions - thanks for pointing that out.
+    Closes: #191703: Update packaging to use the newer gettext-based debconf
+            template translation system
+    Closes: #208049: Please switch to gettext-based debconf templates
+    Closes: #211273: French translation of gettext debconf template
+    I will leave #209082 open until the config script works....
+  * Also ship the README.bcrelay file in the binary package.
+  * Move the HOWTO-IPX+PPTP.txt file from the html/ directory to the normal
+    doc directory.
+    Closes: #220707: CVS directory, and non-html in 'html' dir
+  * Document that IP forwarding needs to be enabled, but refer to
+    /etc/network/options instead of /proc/sys/net/ipv4/ip_forward.
+    Closes: #168718: Documentation has no reference to
+            /proc/sys/net/ipv4/ip_forward
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Wed, 23 Apr 2003 13:34:50 +0200
+
+pptpd (1.1.4-0.b3.1) unstable; urgency=HIGH
+
+  * New upstream release (to fix the security issue).
+    Closes: #189363: pptpd: PoPToP versions earlier than 1.1.3 have a
+                     remotely exploitable buffer overflow
+    Closes: #107933: pptpd: pptpd segfaults if called without arguments
+  * Enabled the broadcast relay option.
+  * The default pptpd-options no longer includes "+chapms"
+    Closes: #179808: pptpd: Completely fails to work
+  * Acknowledge bug report closed by NMUs:
+    Closes: #132819
+    Closes: #126712
+    Closes: #57849
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Wed, 23 Apr 2003 12:12:38 +0200
+
+pptpd (1.1.2-2) unstable; urgency=low
+
+  * New upstream version
+
+ -- Rene Mayrhofer <rene@mayrhofer.eu.org>  Wed, 30 Jul 2003 22:36:01 +0200
+
+pptpd (1.1.2-1.3.woody.0) stable; urgency=HIGH
+
+  * Security fix for the remotely exploitable buffer overflow.
+
+ -- Rene Mayrhofer <rmayr@debian.org>  Wed, 23 Apr 2003 13:10:05 +0200
+
+pptpd (1.1.2-1.2) unstable; urgency=low
+
+  * Non-maintainer upload
+  * Mark /etc/init.d/pptpd as a conffile, per policy (closes: #132819).
+
+ -- Steve Langasek <vorlon@debian.org>  Sat, 16 Feb 2002 12:09:44 -0600
+
+pptpd (1.1.2-1.1) unstable; urgency=low
+
+  * NMU
+  * Add build-depends: debhelper.  Closes: #126712.
+
+ -- LaMont Jones <lamont@debian.org>  Mon, 14 Jan 2002 22:08:38 -0700
+
+pptpd (1.1.2-1) unstable; urgency=low
+
+  * Updated to new upstream version (declared as development version, but it
+    is around long enough to seem stable).
+    Closes: #109908
+  * Do not ship pptpdconfig.pl since it does not work correctly at the
+    moment.
+    Closes: #82385
+  * Took out all MPPE options from pptpd-options (the options for pppd) as
+    long as the default pppd package does not support it.
+    Closes: #61651
+  * Changed maintainer email to rmayr@debian.org
+
+ -- Rene Mayrhofer <rene.mayrhofer@debian.org>  Thu, 27 Dec 2001 11:17:51 +0100
+
+pptpd (1.0.1-2) unstable; urgency=low
+
+  * Changed the dependency from perl to perl-base.
+
+ -- Rene Mayrhofer <rene.mayrhofer@vianova.at>  Tue, 26 Dec 2000 15:44:38 +0100
+
+pptpd (1.0.1-1) unstable; urgency=low
+
+  * New upstream release.
+    The debconf support is still disabled because I do not have time to
+    write a perl script that can change the configuration files (only 2 files
+    need to be changed) thet is really safe (i.e. it does not mess with manual
+    configuration in those files). If anybody can contribute, I would be very
+    happy.
+
+ -- Rene Mayrhofer <rene.mayrhofer@vianova.at>  Mon, 20 Nov 2000 17:38:35 +0100
+
+pptpd (1.0.0-5) unstable; urgency=low
+
+  * First try with debconf support and postinst config script
+
+ -- Rene Mayrhofer <rene.mayrhofer@vianova.at>  Tue, 11 Jul 2000 17:06:10 +0200
+
+pptpd (1.0.0-4) frozen unstable; urgency=low
+
+  * Added a config script to the postinst (now disabled because of problems
+    with debconf perl support - next upload will include it)
+  * Preliminary support for debconf (now disabled because of problems with
+    (debconf perl support - next upload will include it)
+  * Removed the debug option from /etc/pptpd.conf
+  * Updated the HOWTO with a new version from the upstream maintainer
+  * Removed the Recommend: ppp-pam (closes: #57849)
+
+ -- Rene Mayrhofer <rmayr@vianova.at>  Fri,  1 Oct 1999 11:06:39 +0200
+
+pptpd (1.0.0-3) unstable; urgency=low
+
+  * The init script now uses the pidfile created by pptpd
+
+ -- Rene Mayrhofer <rmayr@vianova.at>  Thu, 30 Sep 1999 11:31:11 +0200
+
+pptpd (1.0.0-2) unstable; urgency=low
+
+  * Enhanced the init script to recognize force-reload.
+  * Moved manual pages to /usr/share/man
+  * Added support for TCP wrappers
+
+ -- Rene Mayrhofer <rmayr@vianova.at>  Wed, 29 Sep 1999 13:35:05 +0200
+
+pptpd (1.0.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Rene Mayrhofer <rmayr@vianova.at>  Tue, 28 Sep 1999 16:49:26 +0200
+
+pptpd (0.9.13-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Rene Mayrhofer <rmayr@vianova.at>  Tue, 24 Aug 1999 08:05:29 +0200
+
+pptpd (0.9.12-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Rene Mayrhofer <rmayr@vianova.at>  Tue, 24 Aug 1999 08:05:10 +0200

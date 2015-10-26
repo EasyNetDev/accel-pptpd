@@ -1,0 +1,31 @@
+Description: Fix plugins paths
+ .
+ accel-pptpd (0.9.0-1) unstable; urgency=medium
+ .
+   * accel-pptpd based on 0.8.5 and ported to pptpd version 1.4.0
+Author: Adrian Ban <adrian@abtelecom.ro>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- accel-pptpd-0.9.0.orig/pptpctrl.c
++++ accel-pptpd-0.9.0/pptpctrl.c
+@@ -672,7 +672,7 @@ static void launch_pppd(char **pppaddrs,
+         }
+ 
+         pppd_argv[an++] = "plugin";
+-        pppd_argv[an++] = "pptp.so";
++        pppd_argv[an++] = "/usr/lib/pptpd/pptp.so";
+         pppd_argv[an++] = "pptp_client";
+         pppd_argv[an++] = inet_ntoa(inetaddrs[1]);
+         pppd_argv[an++] = "pptp_sock";

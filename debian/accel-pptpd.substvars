@@ -1,0 +1,3 @@
+shlibs:Depends=libc6 (>= 2.15), libwrap0 (>= 7.6-4~)
+misc:Depends=
+misc:Pre-Depends=
